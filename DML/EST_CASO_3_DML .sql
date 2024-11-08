@@ -209,6 +209,8 @@ VALUES
 UPDATE CLIENTES
 SET Ramo_Atividade = 'Desenvolvimento de Software e Consultoria'
 WHERE Codigo = 1;
+DELETE FROM CLIENTES
+WHERE Codigo = 3;
 
 INSERT INTO EMPREGADOS (Matricula, Nome, Cargo, Salario, Data_Admissao, Qualificacoes, Endereco)
 VALUES
@@ -246,11 +248,19 @@ VALUES
 (2, 'Residencial'),
 (3, 'Industrial');
 
+UPDATE TIPO_DE_ENDERECO
+SET Nome = 'Corporativo'
+WHERE Codigo = 1;
+
 INSERT INTO ENDERECOS (Numero, Logradouro, Complemento, CEP, Bairro, Cidade, Estado, Tipo_Endereco)
 VALUES
 (123, 'Rua A', 'Apartamento 101', '12345-000', 'Centro', 'São Paulo', 'SP', 1),
 (456, 'Avenida B', 'Casa 202', '67890-000', 'Jardins', 'Rio de Janeiro', 'RJ', 2),
 (789, 'Rua C', 'Bloco D', '54321-000', 'Centro', 'Belo Horizonte', 'MG', 3);
+
+UPDATE ENDERECOS
+SET Cidade = 'São Paulo', Estado = 'SP'
+WHERE Numero = 123;
 
 INSERT INTO ENCOMENDAS (Numero, Data_Inclusao, Valor_Total, Valor_Desconto, Valor_Liquido, ID_Forma_Pagamento, Quantidade_Parcelas)
 VALUES
@@ -258,11 +268,19 @@ VALUES
 (2, '2024-06-20', 20000.00, 1000.00, 19000.00, 2, 3),
 (3, '2024-07-05', 15000.00, 750.00, 14250.00, 3, 10);
 
+UPDATE ENCOMENDAS
+SET Valor_Total = 22000.00, Quantidade_Parcelas = 6
+WHERE Numero = 2;
+
 INSERT INTO PRODUTOS (Codigo, Nome, Cor, Dimensoes, Peso, Preco, Tempo_Fabricacao, Desenho_Produto, Horas_Mano_Obra)
 VALUES
 (1, 'Software A', 'Azul', '300x200', 1.5, 5000.00, 100, 'Desenho1.pdf', 20),
 (2, 'Software B', 'Vermelho', '400x300', 2.0, 8000.00, 150, 'Desenho2.pdf', 25),
 (3, 'Software C', 'Verde', '350x250', 1.8, 6500.00, 120, 'Desenho3.pdf', 22);
+
+UPDATE PRODUTOS
+SET Preco = 9000.00, Tempo_Fabricacao = 180
+WHERE Codigo = 2;
 
 INSERT INTO TIPOS_DE_COMPONENTE (Codigo, Nome)
 VALUES
@@ -270,11 +288,19 @@ VALUES
 (2, 'Memória RAM'),
 (3, 'Disco Rígido');
 
+UPDATE TIPOS_DE_COMPONENTE
+SET Nome = 'Chip de Processador'
+WHERE Codigo = 1;
+
 INSERT INTO COMPONENTES (Codigo, Nome, Quantidade_Estoque, Preco_Unitario, Unidade)
 VALUES
 (1, 'Intel i7', 50, 1500.00, 'Unidade'),
 (2, 'Corsair 16GB', 30, 350.00, 'Unidade'),
 (3, 'Seagate 1TB', 20, 500.00, 'Unidade');
+
+UPDATE COMPONENTES
+SET Quantidade_Em_Estoque = 100
+WHERE Codigo = 1;
 
 INSERT INTO MAQUINAS (Tempo_Vida, Data_Compra, Data_Fim_Garantia)
 VALUES
@@ -282,11 +308,19 @@ VALUES
 (7, '2019-03-10', '2024-03-10'),
 (6, '2021-07-20', '2026-07-20');
 
+UPDATE MAQUINAS
+SET Data_Fim_Garantia = '2026-12-31'
+WHERE Tempo_Vida = 5;
+
 INSERT INTO RE (Quantidade_Necessaria, Unidade, Tempo_Uso, Horas_Mao_Obra)
 VALUES
 (10, 'Unidade', 5, 2),
 (15, 'Unidade', 6, 3),
 (20, 'Unidade', 7, 4);
+
+UPDATE RE
+SET Quantidade_Necessaria = 15, Horas_Mao_Obra = 5
+WHERE Unidade = 'Unidade' AND Tempo_Uso = 6;
 
 INSERT INTO RM (Data, Descricao)
 VALUES
@@ -294,8 +328,16 @@ VALUES
 ('2024-07-10', 'Troca de disco rígido'),
 ('2024-08-15', 'Reparo na placa-mãe');
 
+UPDATE RM
+SET Descricao = 'Substituição do motor da máquina'
+WHERE Data = '2024-07-10';
+
 INSERT INTO RS (Quantidade, Data_Necessidade)
 VALUES
 (100, '2024-05-01'),
 (200, '2024-06-10'),
 (150, '2024-07-15');
+
+UPDATE RS
+SET Quantidade = 250
+WHERE Data_Necessidade = '2024-06-10';
