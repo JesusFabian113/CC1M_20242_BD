@@ -199,3 +199,51 @@ CREATE TABLE IF NOT EXISTS RS (
     CODIGO_COMPONENTE INT,
     FOREIGN KEY (CODIGO_COMPONENTE) REFERENCES COMPONENTES(CODIGO)
 );
+
+INSERT INTO CLIENTES (Codigo, CNPJ, Razao_Social, Ramo_Atividade, Data_Cadastramento, Pessoa_Contato)
+VALUES
+(1, '12.345.678/0001-99', 'Tech Solutions Inc.', 'Desenvolvimento de Software', '2024-01-10', 'João Silva'),
+(2, '98.765.432/0001-88', 'SoftWare Tech Ltda.', 'Consultoria em TI', '2024-02-15', 'Maria Souza'),
+(3, '23.456.789/0001-11', 'CodeFactory S.A.', 'Desenvolvimento de Software', '2024-03-01', 'Carlos Almeida');
+
+INSERT INTO EMPREGADOS (Matricula, Nome, Cargo, Salario, Data_Admissao, Qualificacoes, Endereco)
+VALUES
+(1, 'Ana Costa', 'Desenvolvedora', 8000.00, '2023-04-20', 'Bacharel em Ciências da Computação', 'Rua A, 123, SP'),
+(2, 'Lucas Silva', 'Gerente de Projetos', 12000.00, '2022-09-15', 'MBA em Gestão de TI', 'Avenida B, 456, RJ'),
+(3, 'Patrícia Lima', 'Analista de Suporte', 5000.00, '2023-06-10', 'Curso Técnico em TI', 'Rua C, 789, MG');
+
+INSERT INTO EMPRESAS (CNPJ, Razao_Social, Pessoa_Contato, Endereco)
+VALUES
+('34.567.890/0001-22', 'BusinessTech Ltda.', 'Roberta Mendes', 'Rua D, 123, SP'),
+('45.678.901/0001-33', 'NetCom Solutions', 'Ricardo Oliveira', 'Avenida E, 456, RJ'),
+('56.789.012/0001-44', 'DevSoft Partners', 'Fernanda Castro', 'Rua F, 789, MG');
+
+INSERT INTO FORNECEDORES (CNPJ, Razao_Social, Pessoa_Contato, Endereco)
+VALUES
+('67.890.123/0001-55', 'Tech Supplies Ltda.', 'Paulo Oliveira', 'Rua G, 1010, SP'),
+('78.901.234/0001-66', 'SoftParts Suppliers', 'Claudia Ribeiro', 'Avenida H, 2020, RJ'),
+('89.012.345/0001-77', 'CompTech Distribuidora', 'João Pires', 'Rua I, 3030, MG');
+
+INSERT INTO TIPO_DE_ENDERECO (Codigo, Nome)
+VALUES
+(1, 'Comercial'),
+(2, 'Residencial'),
+(3, 'Industrial');
+
+INSERT INTO ENDERECOS (Numero, Logradouro, Complemento, CEP, Bairro, Cidade, Estado, Tipo_Endereco)
+VALUES
+(123, 'Rua A', 'Apartamento 101', '12345-000', 'Centro', 'São Paulo', 'SP', 1),
+(456, 'Avenida B', 'Casa 202', '67890-000', 'Jardins', 'Rio de Janeiro', 'RJ', 2),
+(789, 'Rua C', 'Bloco D', '54321-000', 'Centro', 'Belo Horizonte', 'MG', 3);
+
+INSERT INTO ENCOMENDAS (Numero, Data_Inclusao, Valor_Total, Valor_Desconto, Valor_Liquido, ID_Forma_Pagamento, Quantidade_Parcelas)
+VALUES
+(1, '2024-05-10', 10000.00, 500.00, 9500.00, 1, 5),
+(2, '2024-06-20', 20000.00, 1000.00, 19000.00, 2, 3),
+(3, '2024-07-05', 15000.00, 750.00, 14250.00, 3, 10);
+
+INSERT INTO PRODUTOS (Codigo, Nome, Cor, Dimensoes, Peso, Preco, Tempo_Fabricacao, Desenho_Produto, Horas_Mano_Obra)
+VALUES
+(1, 'Software A', 'Azul', '300x200', 1.5, 5000.00, 100, 'Desenho1.pdf', 20),
+(2, 'Software B', 'Vermelho', '400x300', 2.0, 8000.00, 150, 'Desenho2.pdf', 25),
+(3, 'Software C', 'Verde', '350x250', 1.8, 6500.00, 120, 'Desenho3.pdf', 22);
