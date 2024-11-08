@@ -221,6 +221,8 @@ VALUES
 UPDATE EMPREGADOS
 SET Salario = 8500.00, Cargo = 'Desenvolvedora Sênior'
 WHERE Matricula = 1;
+DELETE FROM CLIENTES
+WHERE Codigo = 3;
 
 INSERT INTO EMPRESAS (CNPJ, Razao_Social, Pessoa_Contato, Endereco)
 VALUES
@@ -231,6 +233,8 @@ VALUES
 UPDATE EMPRESAS
 SET Endereco = 'Rua G, 1234, SP'
 WHERE CNPJ = '34.567.890/0001-22';
+DELETE FROM EMPRESAS
+WHERE CNPJ = '45.678.901/0001-33';
 
 INSERT INTO FORNECEDORES (CNPJ, Razao_Social, Pessoa_Contato, Endereco)
 VALUES
@@ -241,6 +245,8 @@ VALUES
 UPDATE FORNECEDORES
 SET Pessoa_Contato = 'Carlos Martins'
 WHERE CNPJ = '67.890.123/0001-55';
+DELETE FROM EMPRESAS
+WHERE CNPJ = '45.678.901/0001-33';
 
 INSERT INTO TIPO_DE_ENDERECO (Codigo, Nome)
 VALUES
@@ -251,6 +257,8 @@ VALUES
 UPDATE TIPO_DE_ENDERECO
 SET Nome = 'Corporativo'
 WHERE Codigo = 1;
+DELETE FROM TIPO_DE_ENDERECO
+WHERE Codigo = 3;
 
 INSERT INTO ENDERECOS (Numero, Logradouro, Complemento, CEP, Bairro, Cidade, Estado, Tipo_Endereco)
 VALUES
@@ -260,6 +268,8 @@ VALUES
 
 UPDATE ENDERECOS
 SET Cidade = 'São Paulo', Estado = 'SP'
+WHERE Numero = 123;
+DELETE FROM ENDERECOS
 WHERE Numero = 123;
 
 INSERT INTO ENCOMENDAS (Numero, Data_Inclusao, Valor_Total, Valor_Desconto, Valor_Liquido, ID_Forma_Pagamento, Quantidade_Parcelas)
@@ -271,6 +281,8 @@ VALUES
 UPDATE ENCOMENDAS
 SET Valor_Total = 22000.00, Quantidade_Parcelas = 6
 WHERE Numero = 2;
+DELETE FROM ENCOMENDAS
+WHERE Numero = 1;
 
 INSERT INTO PRODUTOS (Codigo, Nome, Cor, Dimensoes, Peso, Preco, Tempo_Fabricacao, Desenho_Produto, Horas_Mano_Obra)
 VALUES
@@ -281,6 +293,8 @@ VALUES
 UPDATE PRODUTOS
 SET Preco = 9000.00, Tempo_Fabricacao = 180
 WHERE Codigo = 2;
+DELETE FROM PRODUTOS
+WHERE Codigo = 3;
 
 INSERT INTO TIPOS_DE_COMPONENTE (Codigo, Nome)
 VALUES
@@ -291,6 +305,8 @@ VALUES
 UPDATE TIPOS_DE_COMPONENTE
 SET Nome = 'Chip de Processador'
 WHERE Codigo = 1;
+DELETE FROM TIPOS_DE_COMPONENTE
+WHERE Codigo = 2;
 
 INSERT INTO COMPONENTES (Codigo, Nome, Quantidade_Estoque, Preco_Unitario, Unidade)
 VALUES
@@ -298,9 +314,12 @@ VALUES
 (2, 'Corsair 16GB', 30, 350.00, 'Unidade'),
 (3, 'Seagate 1TB', 20, 500.00, 'Unidade');
 
+
 UPDATE COMPONENTES
 SET Quantidade_Em_Estoque = 100
 WHERE Codigo = 1;
+DELETE FROM COMPONENTES
+WHERE Codigo = 2;
 
 INSERT INTO MAQUINAS (Tempo_Vida, Data_Compra, Data_Fim_Garantia)
 VALUES
@@ -311,6 +330,8 @@ VALUES
 UPDATE MAQUINAS
 SET Data_Fim_Garantia = '2026-12-31'
 WHERE Tempo_Vida = 5;
+DELETE FROM MAQUINAS
+WHERE Tempo_Vida = 6;
 
 INSERT INTO RE (Quantidade_Necessaria, Unidade, Tempo_Uso, Horas_Mao_Obra)
 VALUES
@@ -321,6 +342,8 @@ VALUES
 UPDATE RE
 SET Quantidade_Necessaria = 15, Horas_Mao_Obra = 5
 WHERE Unidade = 'Unidade' AND Tempo_Uso = 6;
+DELETE FROM RE
+WHERE Unidade = 'Unidade' AND Tempo_Uso = 7;
 
 INSERT INTO RM (Data, Descricao)
 VALUES
@@ -331,6 +354,8 @@ VALUES
 UPDATE RM
 SET Descricao = 'Substituição do motor da máquina'
 WHERE Data = '2024-07-10';
+DELETE FROM RM
+WHERE Data = '2024-06-01';
 
 INSERT INTO RS (Quantidade, Data_Necessidade)
 VALUES
@@ -341,3 +366,5 @@ VALUES
 UPDATE RS
 SET Quantidade = 250
 WHERE Data_Necessidade = '2024-06-10';
+DELETE FROM RS
+WHERE Data_Necessidade = '2024-07-15';
