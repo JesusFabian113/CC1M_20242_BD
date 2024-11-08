@@ -206,11 +206,19 @@ VALUES
 (2, '98.765.432/0001-88', 'SoftWare Tech Ltda.', 'Consultoria em TI', '2024-02-15', 'Maria Souza'),
 (3, '23.456.789/0001-11', 'CodeFactory S.A.', 'Desenvolvimento de Software', '2024-03-01', 'Carlos Almeida');
 
+UPDATE CLIENTES
+SET Ramo_Atividade = 'Desenvolvimento de Software e Consultoria'
+WHERE Codigo = 1;
+
 INSERT INTO EMPREGADOS (Matricula, Nome, Cargo, Salario, Data_Admissao, Qualificacoes, Endereco)
 VALUES
 (1, 'Ana Costa', 'Desenvolvedora', 8000.00, '2023-04-20', 'Bacharel em Ciências da Computação', 'Rua A, 123, SP'),
 (2, 'Lucas Silva', 'Gerente de Projetos', 12000.00, '2022-09-15', 'MBA em Gestão de TI', 'Avenida B, 456, RJ'),
 (3, 'Patrícia Lima', 'Analista de Suporte', 5000.00, '2023-06-10', 'Curso Técnico em TI', 'Rua C, 789, MG');
+
+UPDATE EMPREGADOS
+SET Salario = 8500.00, Cargo = 'Desenvolvedora Sênior'
+WHERE Matricula = 1;
 
 INSERT INTO EMPRESAS (CNPJ, Razao_Social, Pessoa_Contato, Endereco)
 VALUES
@@ -218,11 +226,19 @@ VALUES
 ('45.678.901/0001-33', 'NetCom Solutions', 'Ricardo Oliveira', 'Avenida E, 456, RJ'),
 ('56.789.012/0001-44', 'DevSoft Partners', 'Fernanda Castro', 'Rua F, 789, MG');
 
+UPDATE EMPRESAS
+SET Endereco = 'Rua G, 1234, SP'
+WHERE CNPJ = '34.567.890/0001-22';
+
 INSERT INTO FORNECEDORES (CNPJ, Razao_Social, Pessoa_Contato, Endereco)
 VALUES
 ('67.890.123/0001-55', 'Tech Supplies Ltda.', 'Paulo Oliveira', 'Rua G, 1010, SP'),
 ('78.901.234/0001-66', 'SoftParts Suppliers', 'Claudia Ribeiro', 'Avenida H, 2020, RJ'),
 ('89.012.345/0001-77', 'CompTech Distribuidora', 'João Pires', 'Rua I, 3030, MG');
+
+UPDATE FORNECEDORES
+SET Pessoa_Contato = 'Carlos Martins'
+WHERE CNPJ = '67.890.123/0001-55';
 
 INSERT INTO TIPO_DE_ENDERECO (Codigo, Nome)
 VALUES
@@ -247,3 +263,39 @@ VALUES
 (1, 'Software A', 'Azul', '300x200', 1.5, 5000.00, 100, 'Desenho1.pdf', 20),
 (2, 'Software B', 'Vermelho', '400x300', 2.0, 8000.00, 150, 'Desenho2.pdf', 25),
 (3, 'Software C', 'Verde', '350x250', 1.8, 6500.00, 120, 'Desenho3.pdf', 22);
+
+INSERT INTO TIPOS_DE_COMPONENTE (Codigo, Nome)
+VALUES
+(1, 'Processador'),
+(2, 'Memória RAM'),
+(3, 'Disco Rígido');
+
+INSERT INTO COMPONENTES (Codigo, Nome, Quantidade_Estoque, Preco_Unitario, Unidade)
+VALUES
+(1, 'Intel i7', 50, 1500.00, 'Unidade'),
+(2, 'Corsair 16GB', 30, 350.00, 'Unidade'),
+(3, 'Seagate 1TB', 20, 500.00, 'Unidade');
+
+INSERT INTO MAQUINAS (Tempo_Vida, Data_Compra, Data_Fim_Garantia)
+VALUES
+(5, '2020-01-15', '2025-01-15'),
+(7, '2019-03-10', '2024-03-10'),
+(6, '2021-07-20', '2026-07-20');
+
+INSERT INTO RE (Quantidade_Necessaria, Unidade, Tempo_Uso, Horas_Mao_Obra)
+VALUES
+(10, 'Unidade', 5, 2),
+(15, 'Unidade', 6, 3),
+(20, 'Unidade', 7, 4);
+
+INSERT INTO RM (Data, Descricao)
+VALUES
+('2024-06-01', 'Substituição de peças no processador'),
+('2024-07-10', 'Troca de disco rígido'),
+('2024-08-15', 'Reparo na placa-mãe');
+
+INSERT INTO RS (Quantidade, Data_Necessidade)
+VALUES
+(100, '2024-05-01'),
+(200, '2024-06-10'),
+(150, '2024-07-15');
