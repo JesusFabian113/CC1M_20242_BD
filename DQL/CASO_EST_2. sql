@@ -1,42 +1,57 @@
-SELECT nome_produto, quantidade_estoque, ponto_ressuprimento
-FROM produtos
-WHERE quantidade_estoque <= ponto_ressuprimento;
+SELECT v.codigo_voo, v.horario_partida, v.horario_chegada, a1.nome_aeroporto AS origem, a2.nome_aeroporto AS destino
+FROM voos v
+JOIN aeroportos a1 ON v.origem = a1.id_aeroporto
+JOIN aeroportos a2 ON v.destino = a2.id_aeroporto
+WHERE a1.nome_aeroporto = 'Aeroporto Internacional de São Paulo'; 
 
-SELECT p.id_pedido, f.nome_empresa, p.data_pedido, p.data_entrega, i.id_produto, i.quantidade_solicitada
-FROM pedidos_compra p
-JOIN fornecedores f ON p.id_fornecedor = f.id_fornecedor
-JOIN itens_pedido i ON p.id_pedido = i.id_pedido
-WHERE p.status = 'em_processamento';
+SELECT p.nome, p.cpf, p.telefone, r.data_reserva, r.status
+FROM reservas r
+JOIN passageiros p ON r.id_passageiro = p.id_passageiro
+WHERE r.id_voo = 1001;
 
-SELECT r.data_recebimento, r.condicao, r.motivo_rejeicao, i.id_produto, i.quantidade_solicitada, i.quantidade_recebida
-FROM recebimentos r
-JOIN pedidos_compra p ON r.id_pedido = p.id_pedido
-JOIN itens_pedido i ON p.id_pedido = i.id_pedido
-WHERE p.id_pedido = 101;
+SELECT v.codigo_voo, v.horario_partida, v.horario_chegada, a1.nome_aeroporto AS origem, a2.nome_aeroporto AS destino
+FROM reservas r
+JOIN voos v ON r.id_voo = v.id_voo
+JOIN aeroportos a1 ON v.origem = a1.id_aeroporto
+JOIN aeroportos a2 ON v.destino = a2.id_aeroporto
+WHERE r.id_passageiro = 2;
 
-SELECT nome_empresa, historico_fornecimento
-FROM fornecedores
-WHERE id_fornecedor = 1;
+SELECT v.codigo_voo, v.horario_partida, v.horario_chegada, a1.nome_aeroporto AS origem, a2.nome_aeroporto AS destino
+FROM voos v
+JOIN aeroportos a1 ON v.origem = a1.id_aeroporto
+JOIN aeroportos a2 ON v.destino = a2.id_aeroporto
+WHERE v.id_aeronave = 5;
 
-SELECT t.id_transferencia, pr.nome_produto, t.quantidade_transferida, t.data_transferencia
-FROM transferencias t
-JOIN produtos pr ON t.id_produto = pr.id_produto
-JOIN filiais f ON t.id_filial = f.id_filial
-WHERE f.id_filial = 2;
+SELECT f.nome, f.cargo, o.data_operacao
+FROM operacoes_voo o
+JOIN funcionarios f ON o.id_funcionario = f.id_funcionario
+WHERE o.id_voo = 1001;
 
-SELECT pr.nome_produto, t.quantidade_transferida, f.nome_filial
-FROM transferencias t
-JOIN produtos pr ON t.id_produto = pr.id_produto
-JOIN filiais f ON t.id_filial = f.id_filial
-WHERE f.id_filial = 3;
+SELECT v.codigo_voo, v.horario_partida, v.horario_chegada, a2.nome_aeroporto AS destino
+FROM voos v
+JOIN aeroportos a2 ON v.destino = a2.id_aeroporto
+WHERE v.origem = (SELECT id_aeroporto FROM aeroportos WHERE nome_aeroporto = 'Aeroporto de Congonhas');
 
-SELECT p.id_pedido, f.nome_empresa, p.data_pedido, p.data_entrega, i.id_produto, i.quantidade_solicitada, i.quantidade_recebida
-FROM pedidos_compra p
-JOIN fornecedores f ON p.id_fornecedor = f.id_fornecedor
-JOIN itens_pedido i ON p.id_pedido = i.id_pedido
-WHERE p.status = 'recebido';
+SELECT v.codigo_voo, v.horario_partida, v.horario_chegada, r.status
+FROM reservas r
+JOIN voos v ON r.id_voo = v.id_voo
+WHERE r.id_passageiro = 10; 
 
-SELECT pr.nome_produto, SUM(t.quantidade_transferida) AS total_transferido
-FROM transferencias t
-JOIN produtos pr ON t.id_produto = pr.id_produto
-GROUP BY pr.id_produto;
+SELECT v.codigo_voo, v.horario_partida, v.horario_chegada, a1.nome_aeroporto AS origem, a2.nome_aeroporto AS destino
+FROM voos v
+JOIN aeroportos a1 ON v.origem = a1.id_aeroporto
+JOIN aeroportos a2 ON v.destino = a2.id_aeroporto
+WHERE a1.nome_aeroporto = 'Aeroporto Internacional de São Paulo'
+AND v.horario_partida BETWEEN '2024-11-01 00:00:00' AND '2024-11-30 23:59:59';
+
+SELECT f.nome, f.cargo
+FROM operacoes_voo o
+JOIN funcionarios f ON o.id_funcionario = f.id_funcionario
+WHERE o.id_voo = 1001;
+
+SELECT p.nome, p.cpf, v.codigo_voo, v.horario_partida, v.horario_chegada
+FROM reservas r
+JOIN passageiros p ON r.id_passageiro = p.id_passageiro
+JOIN voos v ON r.id_voo = v.id_voo
+WHERE r.status = 'Confirmada'
+AND DATE(v.horario_partida) = '2024-12-15'; 
