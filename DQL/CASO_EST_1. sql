@@ -1,1 +1,48 @@
+SELECT nome
+FROM participantes
+WHERE empresa = 'Empresa A';
 
+SELECT COUNT(*) AS quantidade_participantes
+FROM participantes
+WHERE TIMESTAMPDIFF(YEAR, data_nascimento, CURDATE()) > 20;
+
+SELECT AVG(TIMESTAMPDIFF(YEAR, data_nascimento, CURDATE())) AS media_idade
+FROM participantes;
+
+SELECT nome, data_nascimento
+FROM participantes;
+
+SELECT nome_evento, data_evento
+FROM eventos
+WHERE id_local = 1;
+
+SELECT nome_atividade, data_atividade
+FROM atividades
+WHERE data_atividade = '2024-11-15';
+
+SELECT COUNT(*) AS total_participantes
+FROM participantes;
+
+SELECT nome_local, capacidade
+FROM locais;
+
+SELECT AVG(capacidade) AS capacidade_media
+FROM locais;
+
+SELECT nome_evento
+FROM eventos
+WHERE id_entidade = (SELECT id_entidade FROM entidades WHERE nome = 'Associação de TI');
+
+SELECT p.nome
+FROM participantes p
+JOIN atividades_participantes ap ON p.id_participante = ap.id_participante
+WHERE ap.id_atividade = 3;
+
+SELECT p.nome AS participante, ap.id_atividade
+FROM participantes p
+JOIN atividades_participantes ap ON p.id_participante = ap.id_participante;
+
+SELECT COUNT(*) AS eventos_programados
+FROM eventos e
+JOIN locais l ON e.id_local = l.id_local
+WHERE l.capacidade > 200;
