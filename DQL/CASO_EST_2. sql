@@ -1,1 +1,42 @@
+SELECT nome_produto, quantidade_estoque, ponto_ressuprimento
+FROM produtos
+WHERE quantidade_estoque <= ponto_ressuprimento;
 
+SELECT p.id_pedido, f.nome_empresa, p.data_pedido, p.data_entrega, i.id_produto, i.quantidade_solicitada
+FROM pedidos_compra p
+JOIN fornecedores f ON p.id_fornecedor = f.id_fornecedor
+JOIN itens_pedido i ON p.id_pedido = i.id_pedido
+WHERE p.status = 'em_processamento';
+
+SELECT r.data_recebimento, r.condicao, r.motivo_rejeicao, i.id_produto, i.quantidade_solicitada, i.quantidade_recebida
+FROM recebimentos r
+JOIN pedidos_compra p ON r.id_pedido = p.id_pedido
+JOIN itens_pedido i ON p.id_pedido = i.id_pedido
+WHERE p.id_pedido = 101;
+
+SELECT nome_empresa, historico_fornecimento
+FROM fornecedores
+WHERE id_fornecedor = 1;
+
+SELECT t.id_transferencia, pr.nome_produto, t.quantidade_transferida, t.data_transferencia
+FROM transferencias t
+JOIN produtos pr ON t.id_produto = pr.id_produto
+JOIN filiais f ON t.id_filial = f.id_filial
+WHERE f.id_filial = 2;
+
+SELECT pr.nome_produto, t.quantidade_transferida, f.nome_filial
+FROM transferencias t
+JOIN produtos pr ON t.id_produto = pr.id_produto
+JOIN filiais f ON t.id_filial = f.id_filial
+WHERE f.id_filial = 3;
+
+SELECT p.id_pedido, f.nome_empresa, p.data_pedido, p.data_entrega, i.id_produto, i.quantidade_solicitada, i.quantidade_recebida
+FROM pedidos_compra p
+JOIN fornecedores f ON p.id_fornecedor = f.id_fornecedor
+JOIN itens_pedido i ON p.id_pedido = i.id_pedido
+WHERE p.status = 'recebido';
+
+SELECT pr.nome_produto, SUM(t.quantidade_transferida) AS total_transferido
+FROM transferencias t
+JOIN produtos pr ON t.id_produto = pr.id_produto
+GROUP BY pr.id_produto;
