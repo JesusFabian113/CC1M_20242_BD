@@ -7,3 +7,22 @@ SELECT p.Nome AS Produto, p.Codigo, c.Nome AS Componente, c.Quantidade_em_Estoqu
 FROM PRODUTOS p
 JOIN COMPONENTES c ON p.Codigo = c.Codigo_Produto
 ORDER BY p.Nome;
+
+SELECT e.Numero, e.Data_inclusao, e.Valor_Total, e.Valor_Desconto, e.Valor_Liquido, f.Nome AS Forma_de_Pagamento, e.Quantidade_de_Parcelas
+FROM ENCOMENDAS e
+JOIN FORMA_DE_PAGAMENTO f ON e.ID_Forma_de_Pagamento = f.Codigo
+WHERE e.CNPJ_CLIENTE = 'CNPJ_DO_CLIENTE_AQUI';
+
+SELECT f.Razao_Social AS Fornecedor, c.Nome AS Componente, c.Quantidade_em_Estoque
+FROM FORNECEDORES f
+JOIN COMPONENTES c ON f.CNPJ = c.CNPJ_FORNECEDOR
+ORDER BY f.Razao_Social;
+
+SELECT e.Nome, t.Telefone
+FROM EMPREGADOS e
+JOIN TELEFONES e ON e.Matricula = t.Matricula_Empregado;
+
+SELECT c.Nome AS Componente, c.Quantidade_em_Estoque
+FROM COMPONENTES c
+WHERE c.Quantidade_em_Estoque < 10
+ORDER BY c.Nome;
