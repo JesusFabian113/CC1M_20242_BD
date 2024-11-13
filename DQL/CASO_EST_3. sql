@@ -26,3 +26,25 @@ SELECT c.Nome AS Componente, c.Quantidade_em_Estoque
 FROM COMPONENTES c
 WHERE c.Quantidade_em_Estoque < 10
 ORDER BY c.Nome;
+
+SELECT m.Data, m.Descricao, ma.Tempo_de_Vida, ma.Data_Fim_Garantia
+FROM RM m
+JOIN MAQUINAS ma ON m.ID_Maquina = ma.Codigo
+ORDER BY m.Data DESC;
+
+SELECT p.Nome AS Produto, c.Nome AS Componente, r.Quantidade_Necessaria
+FROM PRODUTOS p
+JOIN RE r ON p.Codigo = r.Codigo_Produto
+JOIN COMPONENTES c ON r.Codigo_Componente = c.Codigo
+ORDER BY p.Nome, c.Nome;
+
+SELECT e.Numero AS Numero_Encomenda, p.Nome AS Produto, ep.Quantidade
+FROM ENCOMENDAS e
+JOIN ENCOMENDA_PRODUTO ep ON e.Numero = ep.Numero_Encomenda
+JOIN PRODUTOS p ON ep.Codigo_Produto = p.Codigo
+ORDER BY e.Numero;
+
+SELECT p.Nome AS Produto, r.Quantidade_Necessaria, r.Unidade, r.Tempo_uso, r.Horas_de_Mao_de_Obra
+FROM PRODUTOS p
+JOIN RE r ON p.Codigo = r.Codigo_Produto
+ORDER BY p.Nome;
