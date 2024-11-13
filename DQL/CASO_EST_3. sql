@@ -1,1 +1,9 @@
+SELECT c.CNPJ, c.Razao_Social, e.Numero, e.Logradouro, e.Complemento, e.CEP, e.Bairro, e.Cidade, e.Estado
+FROM CLIENTES c
+JOIN ENDEREÇOS e ON c.CNPJ = e.CNPJ_CLIENTE
+ORDER BY c.Razao_Social;
 
+SELECT p.Nome AS Produto, p.Codigo, c.Nome AS Componente, c.Quantidade_em_Estoque
+FROM PRODUTOS p
+JOIN COMPONENTES c ON p.Codigo = c.Codigo_Produto
+ORDER BY p.Nome;
