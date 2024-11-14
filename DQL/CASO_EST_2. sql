@@ -1,22 +1,22 @@
-SELECT v.codigo_voo, v.horario_partida, v.horario_chegada, a1.nome_aeroporto AS origem, a2.nome_aeroporto AS destino
-FROM voos v
-JOIN aeroportos a1 ON v.origem = a1.id_aeroporto
-JOIN aeroportos a2 ON v.destino = a2.id_aeroporto
-WHERE a1.nome_aeroporto = 'Aeroporto Internacional de São Paulo'; 
+SELECT V.CODIGO_VOO, V.HORARIO_PARTIDA,V.HORARIO_CHEGADA, A1.NOME_AEROPORTO AS ORIGEM, A2.NOME_AEROPORTO AS DESTINO
+FROM VOOS V
+JOIN AEROPORTOS A1 ON V.ORIGEM = A1.ID_AEROPORTO
+JOIN AEROPORTOS A2 ON V.DESTINO = A2.ID_AEROPORTO 
+WHERE A1.NOME_AEROPORTO = 'AEROPORTO INTERNACIONAL DE SÃO PAULO';
 
-SELECT p.nome, p.cpf, p.telefone, r.data_reserva, r.status
-FROM reservas r
-JOIN passageiros p ON r.id_passageiro = p.id_passageiro
-WHERE r.id_voo = 1001;
+SELECT P.NOME, P.CPF, P.TELEFONE, R.DATA_RESERVA, R.STATUS
+FROM RESERVAS R 
+JOIN PASSAGEIROS P ON R.ID_PASSAGEIRO = P.ID_PASSAGEIRO
+WHERE R.ID_VOO = 1001;
 
-SELECT v.codigo_voo, v.horario_partida, v.horario_chegada, a1.nome_aeroporto AS origem, a2.nome_aeroporto AS destino
-FROM reservas r
-JOIN voos v ON r.id_voo = v.id_voo
-JOIN aeroportos a1 ON v.origem = a1.id_aeroporto
-JOIN aeroportos a2 ON v.destino = a2.id_aeroporto
-WHERE r.id_passageiro = 2;
+SELECT V.CODIGO_VOO, V.HORARIO_PARTIDA, V.HORARIO_CHEGADA, A1.NOME_AEROPORTO AS ORIGEM, A2.NOME_AEROPORTO AS DESTINO 
+FROM RESERVAS R
+JOIN VOOS V ON R.ID_VOO = V.ID_VOO 
+JOIN AEROPORTOS A1 ON V.ORIGEM = A1.ID_AEROPORTO 
+JOIN AEROPORTOS A2 ON V.DESTINO = A2.ID_AEROPORTO 
+WHERE R.ID_PASSAGEIRO = 2; 
 
-SELECT v.codigo_voo, v.horario_partida, v.horario_chegada, a1.nome_aeroporto AS origem, a2.nome_aeroporto AS destino
+SELECT V.CODIGO_VOO, V.HORARIO_PARTIDA, V.HORARIO_CHEGADA, a1.nome_aeroporto AS origem, a2.nome_aeroporto AS destino
 FROM voos v
 JOIN aeroportos a1 ON v.origem = a1.id_aeroporto
 JOIN aeroportos a2 ON v.destino = a2.id_aeroporto
