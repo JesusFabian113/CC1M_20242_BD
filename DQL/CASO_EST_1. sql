@@ -1,48 +1,49 @@
-SELECT nome
-FROM participantes
-WHERE empresa = 'Empresa A';
+SELECT NOME 
+FROM PARTICIPANTES 
+WHERE EMPRESA = 'EMPRESA A'; 
 
-SELECT COUNT(*) AS quantidade_participantes
-FROM participantes
-WHERE TIMESTAMPDIFF(YEAR, data_nascimento, CURDATE()) > 20;
+SELECT COUNT(*) AS QUANTIDADE_PARTICIPANTES 
+PARTICIPANTES
+WHERE TIMESTAMPDIFF(YEAR, DATA_NASCIMENTO, CURDATE()) > 20; 
 
-SELECT AVG(TIMESTAMPDIFF(YEAR, data_nascimento, CURDATE())) AS media_idade
-FROM participantes;
+SELECT AVG(TIMESTAMPDIFF(YEAR, DATA_NASCIMENTO, CURDATE())) AS MEDIA_IDADE 
+FROM PARTICIPANTES;
 
-SELECT nome, data_nascimento
-FROM participantes;
+SELECT NOME, DATA_NASCIMENTO
+FROM PARTICIPANTES;
 
-SELECT nome_evento, data_evento
-FROM eventos
-WHERE id_local = 1;
+SELECT NOME_EVENTO, DATA_EVENTO 
+FROM EVENTOS 
+WHERE ID_LOCAL = 1; 
 
-SELECT nome_atividade, data_atividade
-FROM atividades
-WHERE data_atividade = '2024-11-15';
+SELECT NOME_ATIVIDADE, DATA_ATIVIDADE 
+FROM ATIVIDADES 
+WHERE DATA_ATIVIDADE = '2024-11-15';
 
-SELECT COUNT(*) AS total_participantes
-FROM participantes;
+SELECT COUNT(*) AS TOTAL_PARTICIPANTES
+FROM PARTICIPANTES;
 
-SELECT nome_local, capacidade
-FROM locais;
+SELECT NOME_LOCAL, CAPACIDADE
+FROM LOCAIS;
 
-SELECT AVG(capacidade) AS capacidade_media
-FROM locais;
+SELECT AVG(CAPACIDADE) AS CAPACIDADE_MEDIA
+FROM LOCAIS;
 
-SELECT nome_evento
-FROM eventos
-WHERE id_entidade = (SELECT id_entidade FROM entidades WHERE nome = 'Associação de TI');
+SELECT NOME_EVENTO 
+FROM EVENTOS
+WHERE ID_ENTIDADE = (SELECT ID_ENTIDADE FROM ENTIDADES WHERE NOME = 'ASSOCIAÇÃO DE TI');
 
-SELECT p.nome
-FROM participantes p
-JOIN atividades_participantes ap ON p.id_participante = ap.id_participante
-WHERE ap.id_atividade = 3;
+SELECT NOME 
+FROM PARTICIPANTES 
+JOIN ATIVIDADES_PARTICIPANTES AP ON P.ID_PARTICIPANTE = AP.ID_PARTICIPANTE
+WHERE AP.ID_ATIVIDADE = 3; 
 
-SELECT p.nome AS participante, ap.id_atividade
-FROM participantes p
-JOIN atividades_participantes ap ON p.id_participante = ap.id_participante;
+SELECT NOME AS PARTICIPANTE, AP.ID_ATIVIDADE
+FROM PARTICIPANTES 
+JOIN ATIVIDADES_PARTICIPANTES AP ON P.ID_PARTICIPANTE = AP.ID_PARTICIPANTE;
 
-SELECT COUNT(*) AS eventos_programados
-FROM eventos e
-JOIN locais l ON e.id_local = l.id_local
-WHERE l.capacidade > 200;
+SELECT COUNT(*) 
+EVENTOS_PROGRAMADOS 
+FROM EVENTOS 
+JOIN LOCAIS ON .ID_LOCAL = .ID_LOCAL 
+WHERE L.CAPACIDADE > 200;
